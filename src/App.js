@@ -3,6 +3,7 @@ import Header from "./mycomponents/Header";
 import { Todos } from "./mycomponents/Todos";
 import { AddTodo } from "./mycomponents/AddTodo";
 import { Footer } from "./mycomponents/footer";
+import { About } from "./mycomponents/About";
 import React, { useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
@@ -55,13 +56,16 @@ function App() {
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos])
-
+  
   return ( 
     <> 
       <Header title="My Todos List" searchBar={false} /> 
             <AddTodo addTodo={addTodo} />
             <Todos todos={todos} onDelete={onDelete} /> 
       <Footer/>
+    <Switch>
+      <Route exact path="/about" component="{About}"/>
+    </Switch>
     </>
   );
 }
